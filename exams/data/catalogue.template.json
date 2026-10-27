@@ -1,0 +1,6 @@
+{
+  "_readme": "Template for the official course catalogue import. Replace with the real export from kellastech.vercel.app (or your Supabase courses table). Keep a stable 'id' per course so repeated imports never duplicate. Import with: npm run catalogue:import -- --file data/catalogue.json --verified   (dry run), then add --apply.",
+  "courses": [
+    { "id": "example-course-slug", "code": "OPTIONAL-CODE", "title": "Example Course Title", "description": "What the course covers", "category": "Category", "level": "Beginner", "instructor": "Instructor name (optional)" }
+  ]
+}

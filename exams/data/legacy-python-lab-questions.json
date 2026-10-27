@@ -1,0 +1,338 @@
+{
+ "description": "Questions from the original Kellastech Python Laboratory Exam (40 marks). Graded by static pattern checks, as in the browser version; code is NOT executed.",
+ "total_marks": 40,
+ "grading_scale": [
+  [
+   90,
+   "A+"
+  ],
+  [
+   85,
+   "A"
+  ],
+  [
+   80,
+   "A-"
+  ],
+  [
+   75,
+   "B+"
+  ],
+  [
+   70,
+   "B"
+  ],
+  [
+   65,
+   "B-"
+  ],
+  [
+   60,
+   "C+"
+  ],
+  [
+   55,
+   "C"
+  ],
+  [
+   50,
+   "C-"
+  ],
+  [
+   0,
+   "F"
+  ]
+ ],
+ "questions": [
+  {
+   "title": "Variables & Type Conversion",
+   "marks": 8,
+   "stem": "Write a Python program that:\n\u2022 Stores a user's name and age\n\u2022 Converts the age to an integer\n\u2022 Prints a formatted message using an f-string",
+   "hint": "Use input() to get user input, int() for conversion, and f-strings for formatted output.",
+   "checks": [
+    {
+     "name": "Uses input() function",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\binput\\s*\\("
+    },
+    {
+     "name": "Converts age to integer using int()",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\bint\\s*\\("
+    },
+    {
+     "name": "Uses f-string for formatting",
+     "points": 2,
+     "type": "fexpr"
+    },
+    {
+     "name": "Has proper variable names",
+     "points": 1,
+     "type": "any",
+     "checks": [
+      {
+       "type": "all",
+       "checks": [
+        {
+         "name": "n",
+         "points": 0,
+         "type": "regex",
+         "pattern": "\\b\\w*name\\w*\\s*=(?!=)",
+         "flags": "i"
+        },
+        {
+         "name": "a",
+         "points": 0,
+         "type": "regex",
+         "pattern": "\\b\\w*age\\w*\\s*=(?!=)",
+         "flags": "i"
+        }
+       ]
+      },
+      {
+       "name": "inputs",
+       "points": 0,
+       "type": "regex",
+       "pattern": "^[ \\t]*\\w+[ \\t]*=[ \\t]*(?:(?:int|float)[ \\t]*\\([ \\t]*)?input[ \\t]*\\(",
+       "flags": "m",
+       "min": 2
+      }
+     ]
+    },
+    {
+     "name": "Code is properly formatted",
+     "points": 1,
+     "type": "minLength",
+     "chars": 20
+    }
+   ]
+  },
+  {
+   "title": "Arithmetic Operations",
+   "marks": 8,
+   "stem": "Write a program that:\n\u2022 Accepts two numbers from the user\n\u2022 Displays their sum, difference, product, division, floor division, modulus, and exponentiation",
+   "hint": "Use float() for number input and demonstrate all 7 arithmetic operators (+, -, *, /, //, %, **).",
+   "checks": [
+    {
+     "name": "Accepts two numbers",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\binput\\s*\\(",
+     "min": 2
+    },
+    {
+     "name": "Addition (+)",
+     "points": 1,
+     "type": "regex",
+     "pattern": "[\\w)\\]]\\s*\\+\\s*[\\w(\\[]"
+    },
+    {
+     "name": "Subtraction (-)",
+     "points": 1,
+     "type": "regex",
+     "pattern": "[\\w)\\]]\\s*-\\s*[\\w(\\[]"
+    },
+    {
+     "name": "Multiplication (*)",
+     "points": 1,
+     "type": "regex",
+     "pattern": "[\\w)\\]]\\s*\\*\\s*[\\w(\\[]",
+     "replace": [
+      [
+       "\\*\\*",
+       " POW "
+      ]
+     ]
+    },
+    {
+     "name": "Division (/)",
+     "points": 1,
+     "type": "regex",
+     "pattern": "[\\w)\\]]\\s*\\/\\s*[\\w(\\[]",
+     "replace": [
+      [
+       "\\/\\/",
+       " FLR "
+      ]
+     ]
+    },
+    {
+     "name": "Floor division (//)",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\/\\/"
+    },
+    {
+     "name": "Modulus (%) and Exponentiation (**)",
+     "points": 2,
+     "type": "all",
+     "checks": [
+      {
+       "name": "m",
+       "points": 0,
+       "type": "regex",
+       "pattern": "[\\w)\\]]\\s*%\\s*[\\w(\\[]"
+      },
+      {
+       "type": "any",
+       "checks": [
+        {
+         "name": "p",
+         "points": 0,
+         "type": "regex",
+         "pattern": "\\*\\*"
+        },
+        {
+         "name": "pw",
+         "points": 0,
+         "type": "regex",
+         "pattern": "\\bpow\\s*\\("
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Strings",
+   "marks": 8,
+   "stem": "Write a program that:\n\u2022 Accepts a string from the user\n\u2022 Prints the first character, last character, and the reversed string\n\u2022 Converts the string to uppercase",
+   "hint": "Use string indexing [0], [-1], slicing [::-1], and the .upper() method.",
+   "checks": [
+    {
+     "name": "Accepts string input",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\binput\\s*\\("
+    },
+    {
+     "name": "First character using [0]",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\[\\s*0\\s*\\]|\\[\\s*:\\s*1\\s*\\]"
+    },
+    {
+     "name": "Last character using [-1]",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\[\\s*-1\\s*\\]|\\[\\s*len\\s*\\("
+    },
+    {
+     "name": "Reversed string using slicing",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\[\\s*:\\s*:\\s*-1\\s*\\]|\\breversed\\s*\\("
+    },
+    {
+     "name": "Uppercase conversion",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\.upper\\s*\\(\\s*\\)"
+    }
+   ]
+  },
+  {
+   "title": "Control Flow",
+   "marks": 8,
+   "stem": "Write a program that:\n\u2022 Accepts a number from the user\n\u2022 Checks whether the number is positive, negative, or zero using if-elif-else",
+   "hint": "Use if-elif-else structure with comparison operators (>, <, ==).",
+   "checks": [
+    {
+     "name": "Accepts number input",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\binput\\s*\\("
+    },
+    {
+     "name": "Uses if statement",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\bif\\b"
+    },
+    {
+     "name": "Uses elif statement",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\belif\\b"
+    },
+    {
+     "name": "Uses else statement",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\belse\\s*:"
+    },
+    {
+     "name": "Proper indentation",
+     "points": 1,
+     "type": "regex",
+     "pattern": ":[ \\t]*\\n[ \\t]+\\S"
+    }
+   ]
+  },
+  {
+   "title": "Loops",
+   "marks": 8,
+   "stem": "Write a Python program that:\n\u2022 Uses a for loop to print numbers from 1 to 10\n\u2022 Uses a while loop to print numbers from 10 down to 1",
+   "hint": "Use range(1, 11) for the for loop, and a counter variable for the while loop.",
+   "checks": [
+    {
+     "name": "Uses for loop",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\bfor\\b[^\\n]*\\bin\\b"
+    },
+    {
+     "name": "Uses range() function",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\brange\\s*\\("
+    },
+    {
+     "name": "For loop prints 1 to 10",
+     "points": 1,
+     "type": "regex",
+     "pattern": "\\brange\\s*\\(\\s*1\\s*,\\s*(?:11|10\\s*\\+\\s*1)\\s*\\)"
+    },
+    {
+     "name": "Uses while loop",
+     "points": 2,
+     "type": "regex",
+     "pattern": "\\bwhile\\b"
+    },
+    {
+     "name": "While loop has proper condition and decrement",
+     "points": 2,
+     "type": "all",
+     "checks": [
+      {
+       "name": "c",
+       "points": 0,
+       "type": "regex",
+       "pattern": "\\bwhile\\b[^\\n:]*(?:>=|<=|!=|>|<)"
+      },
+      {
+       "type": "any",
+       "checks": [
+        {
+         "name": "d1",
+         "points": 0,
+         "type": "regex",
+         "pattern": "-=\\s*\\w"
+        },
+        {
+         "name": "d2",
+         "points": 0,
+         "type": "regex",
+         "pattern": "\\b(\\w+)\\s*=\\s*\\1\\s*-\\s*\\w+"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

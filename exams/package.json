@@ -1,0 +1,46 @@
+{
+  "name": "kellastech-lab-portal",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --watch server/index.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server/index.js",
+    "migrate": "node scripts/migrate.js",
+    "admin:create": "node scripts/create-admin.js",
+    "seed:dev": "node scripts/seed-dev.js",
+    "catalogue:import": "node scripts/import-catalogue.js",
+    "seed:legacy-python": "node scripts/seed-legacy-python.js",
+    "test": "vitest run",
+    "test:api": "vitest run server",
+    "test:web": "vitest run src"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "express": "^4.22.3",
+    "pg": "^8.23.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.6.8",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^10.0.6",
+    "jsdom": "^25.0.1",
+    "supertest": "^7.3.1",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
+}

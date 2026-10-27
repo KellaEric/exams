@@ -1,0 +1,7 @@
+{
+  "_readme": "UNVERIFIED candidate programme titles. They were NOT read from the live catalogue (kellastech.vercel.app/courses renders client-side and could not be fetched from the build environment). Importing this file WITHOUT --verified marks each course 'needs confirmation' so nothing is presented as verified. Compare against the real catalogue, correct the titles, then re-import with real data.",
+  "courses": [
+    { "title": "Data Analytics" }, { "title": "AI / Machine Learning" }, { "title": "Python & Power BI" }, { "title": "Networking" },
+    { "title": "Computer Systems" }, { "title": "MCP Agent Engineering" }, { "title": "Cybersecurity" }, { "title": "Full-Stack Web Development" }
+  ]
+}
